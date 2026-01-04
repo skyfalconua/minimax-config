@@ -1,15 +1,3 @@
-### Installation config
-```sh
-  git clone --depth 1 https://github.com/artas90/astronvim-config.git ~/.config/nvim
-```
-
-### Clean up
-```sh
-  rm -rf ~/.config/nvim-minimax && \
-  rm -rf ~/.local/share/nvim-minimax && \
-  rm -rf ~/.cache/nvim-minimax
-```
-
 ### Setting up
 ```sh
 # Download

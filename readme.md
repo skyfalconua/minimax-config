@@ -29,5 +29,7 @@ To remove the config and local data:
 ```sh
   rm -rf ~/.config/nvim-minimax && \
   rm -rf ~/.local/share/nvim-minimax && \
-  rm -rf ~/.cache/nvim-minimax
+  rm -rf ~/.local/state/nvim-minimax
+
+  # rm -rf ~/.cache/nvim
 ```
