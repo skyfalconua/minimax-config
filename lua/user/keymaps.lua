@@ -36,7 +36,13 @@ maps.n["<C-q>"] = { '<cmd>q!<cr>', desc = "Copy quit" }
 maps.i["<C-s>"] = maps.n["<C-s>"]
 maps.i["<C-q>"] = maps.n["<C-q>"]
 
--- Apply mappings
+-- plugins mappings
+maps.n["<C-m>"] = { '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>', desc = "MiniFiles at file" }
+maps.n["<C-e>"] = { '<Cmd>Neotree reveal=true position=left<CR>', desc = "Neotree at file" }
+maps.n["<C-p>"] = { '<Cmd>Pick buffers<CR>', desc = "Neotree at file" }
+maps.i["<C-p>"] = maps.n["<C-p>"]
+
+-- apply mappings
 for mode, mode_maps in pairs(maps) do
   for lhs, rhs in pairs(mode_maps) do
     local opts = {}
