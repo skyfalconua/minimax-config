@@ -63,6 +63,10 @@ Config.leader_group_clues = {
 
   { mode = 'x', keys = '<Leader>g', desc = '+Git' },
   { mode = 'x', keys = '<Leader>l', desc = '+Language' },
+
+  --@MyCustom user keymaps -- -- --
+  { mode = 'n', keys = '<Leader>q', desc = 'Quit!' },
+  { mode = 'x', keys = '<Leader>q', desc = 'Quit!' },
 }
 
 -- Helpers for a more concise `<Leader>` mappings.
@@ -245,3 +249,8 @@ nmap_leader('vV', '<Cmd>lua MiniVisits.remove_label("core")<CR>', 'Remove "core"
 nmap_leader('vl', '<Cmd>lua MiniVisits.add_label()<CR>',          'Add label')
 nmap_leader('vL', '<Cmd>lua MiniVisits.remove_label()<CR>',       'Remove label')
 -- stylua: ignore end
+
+--@MyCustom User keymaps -- -- --
+nmap_leader('q', '<cmd>q!<cr>', 'Quit!')
+xmap_leader('q', '<cmd>q!<cr>', 'Quit!')
+require("user.keymaps")
