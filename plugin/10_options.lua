@@ -120,3 +120,10 @@ local diagnostic_opts = {
 -- Use `later()` to avoid sourcing `vim.diagnostic` on startup
 MiniDeps.later(function() vim.diagnostic.config(diagnostic_opts) end)
 -- stylua: ignore end
+
+--@MyCustom settings
+-- use neo-tree instead of netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- force use colors in terminal
+vim.opt.termguicolors = true
