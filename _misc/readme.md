@@ -29,6 +29,16 @@ NVIM_APPNAME=nvim-minimax nvim -l ./MiniMax/setup.lua
 # 3. Delete the backup directory.
 ```
 
+
+### Updating
+```sh
+# In orded to reduce dependecies copy single files directly
+
+snacks="https://raw.githubusercontent.com/folke/snacks.nvim/refs/heads/main"
+curl "${snacks}/lua/snacks/scroll.lua" > vendor/snacks-scroll.lua
+``
+
+
 ### Lua snippets
 ```lua
 -- Standard paths
