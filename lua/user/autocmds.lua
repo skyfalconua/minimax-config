@@ -2,7 +2,7 @@
 vim.api.nvim_create_autocmd("VimEnter", {
   callback = function()
     local argc = vim.fn.argc()
-    local arg0 = vim.fn.argv(0) == "."
+    local arg0 = vim.fn.argv(0)
     if argc == 1 and (arg0 == "." or vim.fn.isdirectory(arg0) == 1) then
       return
     end
@@ -11,23 +11,6 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.cmd("wincmd l")
   end,
 })
-
-local editable_buftype = { "prompt", "terminal" }
-local function is_editable_buffer(bo)
-  local btype = bo.buftype
-
-  if vim.tbl_contains(editable_buftype, btype) then return true end
-
-  if btype ~= "" then return false end
-
-  -- Don't auto-insert if we're just previewing/navigating
-  -- (like with telescope, fzf, or quick jumps)
-  if bo.modifiable and not bo.readonly then
-    return true
-  end
-
-  return false
-end
 
 -- Enter insert mode on buffer switch (regular files only)
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -41,7 +24,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
     --   .. " buflisted=" .. tostring(vim.bo.buflisted)
     --   .. " bufhidden=" .. tostring(vim.bo.bufhidden)
     -- )
-    if is_editable_buffer(vim.bo) then
+    if UserMisc.is_editable_buffer() then
       vim.cmd("startinsert")
     else
       vim.cmd("stopinsert")

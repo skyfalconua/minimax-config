@@ -38,8 +38,7 @@ maps.n["<C-q>"] = { '<cmd>qa!<cr>', desc = "Copy quit" }
 maps.i["<C-q>"] = maps.n["<C-q>"]
 
 -- plugins mappings
-
-maps.n["<C-o>"] = { '<Cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<CR>', desc = "MiniFiles at file" }
+maps.n["<C-o>"] = { '<Cmd>lua UserMisc.mini_files_open()<CR>', desc = "MiniFiles at file" }
 maps.i["<C-o>"] = maps.n["<C-o>"]
 
 maps.n["<C-e>"] = { '<Cmd>Neotree reveal=true position=left<CR>', desc = "Neotree at file" }
