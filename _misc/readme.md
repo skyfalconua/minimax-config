@@ -49,7 +49,6 @@ ls $HOME/.local/share/nvim-minimax/site/pack/deps/opt/
 ```
 
 ### Todo
-- mini.files error on neotree buffer
 - mini.files popup styles (if possible)
 - more syntaxes highlight
 - (maybe) debugger, spectre, etc ...
