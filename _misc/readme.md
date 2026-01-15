@@ -17,16 +17,35 @@ NVIM_APPNAME=nvim-minimax nvim
 
 ### Updating
 ```sh
-# Pull updates of MiniMax itself
-git -C ./MiniMax pull
+icommit=$(git log --grep='@init' --oneline | cut -d ' ' -f 1)
+dt=$(date +'%Y-%m-%d')
+appname="nvim-minimax"
 
-# Run setup script again. Remove `NVIM_APPNAME=nvim-minimax` for full-time config
-NVIM_APPNAME=nvim-minimax nvim -l ./MiniMax/setup.lua
+# Use a temp branch keep changes isolated
+cd "$HOME/.config/$appname"
+git checkout "$icommit"
+git checkout -b "$dt"
 
-# There probably be messages about backed up files:
-# 1. Examine 'MiniMax-backup' directory with conflicting files.
-# 2. Recover the ones you need.
-# 3. Delete the backup directory.
+# Init default MiniMax config
+git clone --filter=blob:none https://github.com/nvim-mini/MiniMax __MiniMax
+NVIM_APPNAME="$appname" nvim -l __MiniMax/setup.lua
+rm -rf __MiniMax
+
+# Commit default config
+git add -A
+git commit -m "minimax init $dt"
+
+# Cherry-pick commits one by one
+git log main --oneline
+git cherry-pick __hash__
+
+# Re-create main branch
+git branch -D main
+git checkout -b main
+git push --set-upstream origin --force main
+
+# Clean up
+git branch -D "$dt"
 ```
 
 ### Lua snippets
@@ -46,6 +65,21 @@ vim.opt.packpath:append("~/another/custom/plugin/path")
 ### Shell snippets
 ```sh
 ls $HOME/.local/share/nvim-minimax/site/pack/deps/opt/
+```
+
+## windows scripts
+```ps1
+git clone --depth 1 https://github.com/skyfalconua/minimax-config.git "$env:LOCALAPPDATA\nvim-minimax"
+
+function vv {
+  $env:NVIM_APPNAME = "nvim-minimax"
+  nvim $args
+}
+
+Remove-Item -Recurse -Force `
+  "$env:LOCALAPPDATA\nvim-minimax", `
+  "$env:LOCALAPPDATA\nvim-minimax-data", `
+  "$env:TEMP\nvim-minimax"
 ```
 
 ### Todo
