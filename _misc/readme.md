@@ -17,16 +17,7 @@ NVIM_APPNAME=nvim-minimax nvim
 
 ### Updating
 ```sh
-# Pull updates of MiniMax itself
-git -C ./MiniMax pull
-
-# Run setup script again. Remove `NVIM_APPNAME=nvim-minimax` for full-time config
-NVIM_APPNAME=nvim-minimax nvim -l ./MiniMax/setup.lua
-
-# There probably be messages about backed up files:
-# 1. Examine 'MiniMax-backup' directory with conflicting files.
-# 2. Recover the ones you need.
-# 3. Delete the backup directory.
+bash _misc/rebase.sh
 ```
 
 ### Lua snippets
@@ -46,6 +37,21 @@ vim.opt.packpath:append("~/another/custom/plugin/path")
 ### Shell snippets
 ```sh
 ls $HOME/.local/share/nvim-minimax/site/pack/deps/opt/
+```
+
+## windows scripts
+```ps1
+git clone --depth 1 https://github.com/skyfalconua/minimax-config.git "$env:LOCALAPPDATA\nvim-minimax"
+
+function vv {
+  $env:NVIM_APPNAME = "nvim-minimax"
+  nvim $args
+}
+
+Remove-Item -Recurse -Force `
+  "$env:LOCALAPPDATA\nvim-minimax", `
+  "$env:LOCALAPPDATA\nvim-minimax-data", `
+  "$env:TEMP\nvim-minimax"
 ```
 
 ### Todo
