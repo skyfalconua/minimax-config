@@ -1,20 +1,3 @@
-### Setting up
-```sh
-# Download
-git clone --filter=blob:none https://github.com/nvim-mini/MiniMax ./MiniMax
-
-# Set up config (copies config files and possibly initiates Git repository)
-NVIM_APPNAME=nvim-minimax nvim -l ./MiniMax/setup.lua
-
-# Start Neovim
-NVIM_APPNAME=nvim-minimax nvim
-
-# Wait for plugins to install (there should be no new notifications)
-
-# Enjoy your new config!
-# Start with reading its files. Type `<Space>`+`e`+`i` to open 'init.lua'.
-```
-
 ### Updating
 ```sh
 bash _misc/rebase.sh
@@ -52,6 +35,23 @@ Remove-Item -Recurse -Force `
   "$env:LOCALAPPDATA\nvim-minimax", `
   "$env:LOCALAPPDATA\nvim-minimax-data", `
   "$env:TEMP\nvim-minimax"
+```
+
+### Initial setting up
+```sh
+# Download
+git clone --filter=blob:none https://github.com/nvim-mini/MiniMax ./MiniMax
+
+# Set up config (copies config files and possibly initiates Git repository)
+NVIM_APPNAME=nvim-minimax nvim -l ./MiniMax/setup.lua
+
+# Start Neovim
+NVIM_APPNAME=nvim-minimax nvim
+
+# Wait for plugins to install (there should be no new notifications)
+
+# Enjoy your new config!
+# Start with reading its files. Type `<Space>`+`e`+`i` to open 'init.lua'.
 ```
 
 ### Todo

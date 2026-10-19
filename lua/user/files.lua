@@ -1,16 +1,21 @@
-local add, now, later = MiniDeps.add, MiniDeps.now, MiniDeps.later
+local add = vim.pack.add
+local now, later = Config.now, Config.later
 
 now(function()
   add({
-    source = 'nvim-neo-tree/neo-tree.nvim',
-    checkout = 'v3.x',
-    depends = {
-      "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      "nvim-tree/nvim-web-devicons", -- optional, but recommended
+    -- dependencies
+    "https://github.com/nvim-lua/plenary.nvim",
+    "https://github.com/MunifTanjim/nui.nvim",
+    "https://github.com/nvim-tree/nvim-web-devicons", -- optional, but recommended
+    -- neo-tree itself
+    {
+      src = 'https://github.com/nvim-neo-tree/neo-tree.nvim',
+      version = 'v3.x',
     }
   })
+end)
 
+later(function()
   require("neo-tree").setup({
     popup_border_style = "",
     filesystem = {
@@ -31,9 +36,7 @@ now(function()
       separator = { left = "", right = "" },
     },
   })
-end)
 
-later(function()
   require('mini.files').setup({
     mappings = {
       close       = 'q',

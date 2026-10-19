@@ -1,8 +1,9 @@
-local add, now = MiniDeps.add, MiniDeps.now
+local add = vim.pack.add
+local now = Config.now
 
 -- Custom theme
 now(function()
-  add('nickkadutskyi/jb.nvim')
+  add({ 'https://github.com/nickkadutskyi/jb.nvim' })
   vim.cmd.colorscheme('jb')
 end)
 

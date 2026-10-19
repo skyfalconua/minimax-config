@@ -1,6 +1,6 @@
 #!/bin/sh
 appname="nvim-minimax"
-dt=$(date +'%y-%m-%d')
+nvimdt=$(date +'%y-%m-%d')
 
 minimax_reinit() {
   # Find the initial commit
@@ -32,7 +32,10 @@ minimax_newmain() {
   # Re-create main branch
   git branch -D main
   git checkout -b main
-  git push --set-upstream origin --force main
+
+  echo
+  echo "Run manually: git push --set-upstream origin --force main"
+  echo
 
   # Clean up
   git branch -D "$nvimdt"
