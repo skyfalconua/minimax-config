@@ -47,6 +47,10 @@ maps.i["<C-e>"] = maps.n["<C-e>"]
 maps.n["<C-p>"] = { '<Cmd>Neotree source=buffers position=left<CR>', desc = "Neotree buffers" }
 maps.i["<C-p>"] = maps.n["<C-p>"]
 
+-- leader mappings
+
+maps.n["<Leader>x"] = { '<Cmd>lua MiniBufremove.delete()<CR>' , desc = "Buffer Delete" }
+
 -- apply mappings
 for mode, mode_maps in pairs(maps) do
   for lhs, rhs in pairs(mode_maps) do

@@ -67,6 +67,8 @@ Config.leader_group_clues = {
   --@MyCustom user keymaps -- -- --
   { mode = 'n', keys = '<Leader>q', desc = 'Quit!' },
   { mode = 'x', keys = '<Leader>q', desc = 'Quit!' },
+  { mode = 'n', keys = '<Leader>x', desc = 'Buffer delete' },
+  { mode = 'x', keys = '<Leader>x', desc = 'Buffer delete' },
 }
 
 -- Helpers for a more concise `<Leader>` mappings.
